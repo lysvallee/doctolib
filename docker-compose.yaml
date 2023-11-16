@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  django:
+    image: my-django-image
+    ports:
+      - "8000:8000"
+
+  grafana:
+    image: grafana/grafana-enterprise
+    restart: unless-stopped
+    container_name: grafana
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage: {}
